@@ -49,7 +49,7 @@ class CityDetailView(DetailView):
     template_name = 'cities/city_detail.html'
 
 
-class CityCreateView(CreateView):
+class CityCreateView(SuccessMessageMixin, CreateView):
     model = City
     form_class = CityForm
     template_name = 'cities/city_create.html'
