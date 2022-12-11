@@ -59,11 +59,11 @@ class TrainUpdateView(SuccessMessageMixin, UpdateView):
 
 class TrainDeleteView(DeleteView):
     model = Train
-    template_name = 'trains/train_delete.html'
+    # template_name = 'trains/train_delete.html'
     success_url = reverse_lazy('trains:home')
 
-    # Не работает
+    # Не работает начиная с 4 django
     # https://www.udemy.com/course/django-31-junior-django-developer/learn/lecture/24039222#questions/16677144
-    # def get(self, request, *args, **kwargs):
-    #     messages.success(request, 'Город успешно удален')
-    #     return self.post(request, *args, **kwargs)
+    def get(self, request, *args, **kwargs):
+        messages.success(request, 'Город успешно удален')
+        return self.post(request, *args, **kwargs)
